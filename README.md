@@ -9,7 +9,7 @@
 
 **Conceptually**
 
-* Input: Javascript `mxGraph` builder (e.g. ./people-process-technology.js)
+* Input: Javascript `mxGraph` builder (e.g. `./people-process-technology.js`)
 * Output:
     * Graph as `.png` image
     * Graph as `.drawio` file
