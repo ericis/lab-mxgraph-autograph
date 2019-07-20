@@ -5,7 +5,11 @@
 * Automatically generate graph images using `mxGraph` running in a host container using `static-server` and headless browser automation with `puppeteer`.
 * Automatically generate `drawio` graphs using the above `mxGraph` XML
 
-![Generated Graph](./graph.png)
+    View the [generated diagram on draw.io](https://www.draw.io/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fgraph.drawio). 
+
+    Below is the generated diagram as an image:
+
+    <img src="./graph.png" width="150" alt="Generated graph" />
 
 ## Resources
 
