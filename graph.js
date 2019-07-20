@@ -1,64 +1,5 @@
 /// <reference path="./node_modules/mxgraph/javascript/mxClient.js" />
-
-function buildShapeStyle(attributes) {
-
-    let style = '';
-
-    if (!attributes) {
-        return style;
-    }
-
-    Object.keys(attributes).forEach((key, index) => {
-
-        let value = attributes[key];
-
-        if (typeof value === 'boolean') {
-            value = value ? 1 : 0;
-        }
-
-        style += (style.length === 0 ? '' : ';') + `${key}=${value}`;
-    });
-
-    // console.log('Shape style', style);
-
-    return style;
-}
-
-const canvasPadding = 20;
-
-const ourdrawio = {
-
-    drawRectangle: (graph, text, x, y, width, height, styles) => {
-
-        const style = buildShapeStyle(styles);
-
-        return graph.insertVertex(graph.getDefaultParent(), null, text, x, y, width, height, style);
-    },
-
-    drawCylinder: (graph, text, x, y, width, height, styles) => {
-
-        const style = buildShapeStyle(styles);
-
-        return graph.insertVertex(graph.getDefaultParent(), null, text, x, y, width, height, `shape=cylinder;${style}`);
-    },
-
-    drawEdge: (graph, node1, node2, text, styles) => {
-
-        const style = buildShapeStyle(styles);
-
-        return graph.insertEdge(graph.getDefaultParent(), null, text || '', node1, node2, style);
-    },
-
-    buildLabel: (options) => {
-
-        const userObj = document.createElement('UserObject');
-
-        userObj.setAttribute('label', options.label);
-        userObj.setAttribute('link', options.url);
-
-        return userObj;
-    },
-};
+/// <reference path="./lib/mxgraph.js" />
 
 /**
  *
@@ -67,18 +8,15 @@ const ourdrawio = {
 function buildGraph(graph) {
 
     console.log('Building custom graph...');
-    const parent = graph.getDefaultParent();
 
-    const a = ourdrawio.drawCylinder(graph, 'A', 0, 0, 60, 80, { whiteSpace: 'wrap', boundedLbl: true });
-    const b = ourdrawio.drawRectangle(graph, 'B', 0, 0, 80, 30, { whiteSpace: 'wrap', rounded: true, arcSize: 30 });
-    const c = ourdrawio.drawRectangle(graph, 'C', 0, 0, 80, 30, { whiteSpace: 'wrap', rounded: true, arcSize: 30 });
-    const d = ourdrawio.drawRectangle(graph, 'D', 0, 0, 80, 30, { whiteSpace: 'wrap' });
+    const a = graph.drawCylinder('A', 0, 0, 60, 80, { whiteSpace: 'wrap', boundedLbl: true });
+    const b = graph.drawRectangle('B', 0, 0, 80, 30, { whiteSpace: 'wrap', rounded: true, arcSize: 30 });
+    const c = graph.drawRectangle('C', 0, 0, 80, 30, { whiteSpace: 'wrap', rounded: true, arcSize: 30 });
+    const d = graph.drawRectangle('D', 0, 0, 80, 30, { whiteSpace: 'wrap' });
 
-    graph.insertEdge(parent, null, '', a, b);
-    graph.insertEdge(parent, null, '', a, c);
-    graph.insertEdge(parent, null, '', c, d);
+    graph.drawEdge(a, b, '');
+    graph.drawEdge(a, c, '');
+    graph.drawEdge(c, d, '');
 
-    const layout = new mxHierarchicalLayout(graph, mxConstants.DIRECTION_NORTH);
-
-    layout.execute(parent, a);
+    graph.layoutDown(a);
 }

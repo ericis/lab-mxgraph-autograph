@@ -1,65 +1,5 @@
 /// <reference path="./node_modules/mxgraph/javascript/mxClient.js" />
 
-function buildShapeStyle(attributes) {
-
-    let style = '';
-
-    if (!attributes) {
-        return style;
-    }
-
-    Object.keys(attributes).forEach((key, index) => {
-
-        let value = attributes[key];
-
-        if (typeof value === 'boolean') {
-            value = value ? 1 : 0;
-        }
-
-        style += (style.length === 0 ? '' : ';') + `${key}=${value}`;
-    });
-
-    // console.log('Shape style', style);
-
-    return style;
-}
-
-const canvasPadding = 20;
-
-const ourdrawio = {
-
-    drawRectangle: (graph, text, x, y, width, height, styles) => {
-
-        const style = buildShapeStyle(styles);
-
-        return graph.insertVertex(graph.getDefaultParent(), null, text, x, y, width, height, style);
-    },
-
-    drawCylinder: (graph, text, x, y, width, height, styles) => {
-
-        const style = buildShapeStyle(styles);
-
-        return graph.insertVertex(graph.getDefaultParent(), null, text, x, y, width, height, `shape=cylinder;${style}`);
-    },
-
-    drawEdge: (graph, node1, node2, text, styles) => {
-
-        const style = buildShapeStyle(styles);
-
-        return graph.insertEdge(graph.getDefaultParent(), null, text || '', node1, node2, style);
-    },
-
-    buildLabel: (options) => {
-
-        const userObj = document.createElement('UserObject');
-
-        userObj.setAttribute('label', options.label);
-        userObj.setAttribute('link', options.url);
-
-        return userObj;
-    },
-};
-
 /**
  *
  * @param {mxGraph} graph
@@ -97,13 +37,12 @@ function buildGraph(graph) {
         endArrow: 'none',
     };
 
-    const peopleData = ourdrawio.buildLabel({
+    const peopleData = graph.buildLabel({
         label: 'People',
         url: 'https://ourchitecture.github.io/people',
     });
 
-    const people = ourdrawio.drawRectangle(
-        graph,
+    const people = graph.drawRectangle(
         peopleData,
         xPeople,
         canvasPadding,
@@ -115,13 +54,12 @@ function buildGraph(graph) {
             strokeColor: '#82b366',
         });
 
-    const processData = ourdrawio.buildLabel({
+    const processData = graph.buildLabel({
         label: 'Process',
         url: 'https://ourchitecture.github.io/process',
     });
 
-    const process = ourdrawio.drawRectangle(
-        graph,
+    const process = graph.drawRectangle(
         processData,
         canvasPadding,
         yBottom,
@@ -133,13 +71,12 @@ function buildGraph(graph) {
             strokeColor: '#6c8ebf',
         });
 
-    const technologyData = ourdrawio.buildLabel({
+    const technologyData = graph.buildLabel({
         label: 'Technology',
         url: 'https://ourchitecture.github.io/technology',
     });
 
-    const technology = ourdrawio.drawRectangle(
-        graph,
+    const technology = graph.drawRectangle(
         technologyData,
         xTechnology,
         yBottom,
@@ -153,26 +90,9 @@ function buildGraph(graph) {
 
     const edges = [];
 
-    edges.push(ourdrawio.drawEdge(graph, people, process, '', edgeStyles));
-    edges.push(ourdrawio.drawEdge(graph, process, technology, '', edgeStyles));
-    edges.push(ourdrawio.drawEdge(graph, technology, people, '', edgeStyles));
+    edges.push(graph.drawEdge(people, process, '', edgeStyles));
+    edges.push(graph.drawEdge(process, technology, '', edgeStyles));
+    edges.push(graph.drawEdge(technology, people, '', edgeStyles));
 
     graph.orderCells(true, edges);
-
-    graph.convertValueToString = function (cell) {
-
-        if (mxUtils.isNode(cell.value) && cell.value.nodeName.toLowerCase() == 'userobject') {
-
-            // Returns a DOM for the label
-            const div = document.createElement('div');
-
-            div.innerHTML = cell.getAttribute('label');
-
-            mxUtils.br(div);
-
-            return div;
-        }
-
-        return '';
-    };
 }
