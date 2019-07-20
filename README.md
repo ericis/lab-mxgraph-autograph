@@ -9,15 +9,15 @@
 
 ### People, Process, Technology
 
-This example demonstrates the use of custom styles, support for draw.io links with the use of `UserObject`, and ensures edges are below vertices (shapes). View the [generated diagram on draw.io](https://www.draw.io/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fpeople-process-technology.drawio).
+This example demonstrates the use of custom styles, support for draw.io links with the use of `UserObject`, and ensures edges are below vertices (shapes). View the [clickable diagram on draw.io](https://www.draw.io/?lightbox=1&target=self&highlight=0000ff#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fpeople-process-technology.drawio).
 
-<img src="./people-process-technology.png" width="250" alt="People, Process, Technology graph example" />
+[<img src="./people-process-technology.png" width="250" alt="People, Process, Technology graph example" />](https://www.draw.io/?lightbox=1&target=self&highlight=0000ff#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fpeople-process-technology.drawio)
 
 ### Generic shapes graph
 
-This example demonstrates basic, connected shapes. View the [generated diagram on draw.io](https://www.draw.io/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fgraph.drawio).
+This example demonstrates basic, connected shapes. View the [generated diagram on draw.io](https://www.draw.io/?lightbox=1&target=self&highlight=0000ff#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fgraph.drawio).
 
-<img src="./graph.png" width="150" alt="Generated graph example" />
+[<img src="./graph.png" width="150" alt="Generated graph example" />](https://www.draw.io/?lightbox=1&target=self&highlight=0000ff#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fgraph.drawio)
 
 ## Resources
 
