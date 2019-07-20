@@ -1,4 +1,4 @@
-# Experiment with MxGraph and Puppeteer
+# Experiment with mxGraph, Puppeteer and draw.io
 
 ## Goals
 
