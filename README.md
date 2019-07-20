@@ -5,6 +5,8 @@
 * Automatically generate graph images using `mxGraph` running in a host container using `static-server` and headless browser automation with `puppeteer`.
 * Automatically generate `drawio` graphs using the above `mxGraph` XML
 
+![Generated Graph](./graph.png)
+
 ## Resources
 
 * [mxGraph User Manual for JS](https://jgraph.github.io/mxgraph/docs/manual.html)
