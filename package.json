@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "build:ppt": "node ./lib/graph people-process-technology.js people-process-technology.drawio people-process-technology.png --debug",
         "build": "node ./lib/graph graph.js graph.drawio graph.png --debug",
         "start": "nodemon ./lib/graph.js graph.js graph.drawio graph.png --debug"
     },

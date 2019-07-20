@@ -4,6 +4,10 @@ function buildShapeStyle(attributes) {
 
     let style = '';
 
+    if (!attributes) {
+        return style;
+    }
+
     Object.keys(attributes).forEach((key, index) => {
 
         let value = attributes[key];
@@ -20,6 +24,8 @@ function buildShapeStyle(attributes) {
     return style;
 }
 
+const canvasPadding = 20;
+
 const ourdrawio = {
 
     drawRectangle: (graph, text, x, y, width, height, styles) => {
@@ -35,6 +41,23 @@ const ourdrawio = {
 
         return graph.insertVertex(graph.getDefaultParent(), null, text, x, y, width, height, `shape=cylinder;${style}`);
     },
+
+    drawEdge: (graph, node1, node2, text, styles) => {
+
+        const style = buildShapeStyle(styles);
+
+        return graph.insertEdge(graph.getDefaultParent(), null, text || '', node1, node2, style);
+    },
+
+    buildLabel: (options) => {
+
+        const userObj = document.createElement('UserObject');
+
+        userObj.setAttribute('label', options.label);
+        userObj.setAttribute('link', options.url);
+
+        return userObj;
+    },
 };
 
 /**
@@ -44,7 +67,6 @@ const ourdrawio = {
 function buildGraph(graph) {
 
     console.log('Building custom graph...');
-
     const parent = graph.getDefaultParent();
 
     const a = ourdrawio.drawCylinder(graph, 'A', 0, 0, 60, 80, { whiteSpace: 'wrap', boundedLbl: true });
