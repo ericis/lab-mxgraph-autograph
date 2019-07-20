@@ -5,11 +5,19 @@
 * Automatically generate graph images using `mxGraph` running in a host container using `static-server` and headless browser automation with `puppeteer`.
 * Automatically generate `drawio` graphs using the above `mxGraph` XML
 
-    View the [generated diagram on draw.io](https://www.draw.io/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fgraph.drawio). 
+## Examples
 
-    Below is the generated diagram as an image:
+### People, Process, Technology
 
-    <img src="./graph.png" width="150" alt="Generated graph" />
+This example demonstrates the use of custom styles, support for draw.io links with the use of `UserObject`, and ensures edges are below vertices (shapes). View the [generated diagram on draw.io](https://www.draw.io/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fpeople-process-technology.drawio).
+
+<img src="./people-process-technology.png" width="250" alt="People, Process, Technology graph example" />
+
+### Generic shapes graph
+
+This example demonstrates basic, connected shapes. View the [generated diagram on draw.io](https://www.draw.io/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fericis%2Flab-mxgraph-autograph%2Fmaster%2Fgraph.drawio).
+
+<img src="./graph.png" width="150" alt="Generated graph example" />
 
 ## Resources
 
